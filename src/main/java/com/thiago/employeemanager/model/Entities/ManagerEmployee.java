@@ -2,10 +2,25 @@ package com.thiago.employeemanager.model.Entities;
 
 import com.thiago.employeemanager.model.enums.EmployeeType;
 
-public class ManagerEmployee extends Employee {
+public class ManagerEmployee
+        extends Employee {
 
-    public ManagerEmployee(String name, String role, Integer nationalID, EmployeeType employeeType) {
-        super(name, role, nationalID, employeeType);
+    private ManagerEmployee(Builder builder){
+        super(builder);
+    }
+
+    public static class Builder
+            extends Employee.Builder<Builder>{
+
+        @Override
+        protected Builder self(){
+            return this;
+        }
+
+        @Override
+        public ManagerEmployee build(){
+            return new ManagerEmployee(this);
+        }
     }
 
     @Override

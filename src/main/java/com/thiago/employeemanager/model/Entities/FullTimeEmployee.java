@@ -4,8 +4,22 @@ import com.thiago.employeemanager.model.enums.EmployeeType;
 
 public class FullTimeEmployee extends Employee {
 
-    public FullTimeEmployee(String name, String role, Integer nationalID, EmployeeType employeeType) {
-        super(name, role, nationalID, employeeType);
+    private FullTimeEmployee(Builder builder){
+        super(builder);
+    }
+
+    public static class Builder
+            extends Employee.Builder<Builder>{
+
+        @Override
+        protected Builder self(){
+            return this;
+        }
+
+        @Override
+        public FullTimeEmployee build(){
+            return new FullTimeEmployee(this);
+        }
     }
 
     @Override
